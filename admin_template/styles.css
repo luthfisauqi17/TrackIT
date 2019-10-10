@@ -81,14 +81,10 @@
 }
 
 .your-cart-box {
-  width: 30rem;
+  width: 50rem;
   height: 30rem;
   background-color: lightblue;
   margin: 1rem;
   /* margin-left: 30%; 
   margin-top: 2rem; */
-}
-
-.transaction-box {
-  display: flex;
 }
