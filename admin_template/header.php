@@ -14,7 +14,7 @@
         </div>
         <div class="navbar-right">
             <ul>
-                <li><a href="#"><div><img class="icon" src="static/icon/logout.png" alt="">Logout</div></a></li>
+                <!-- <li><a href="#"><div><img class="icon" src="static/icon/logout.png" alt="">Logout</div></a></li> -->
             </ul>
         </div>
     </div>

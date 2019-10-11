@@ -82,9 +82,44 @@
 
 .your-cart-box {
   width: 50rem;
-  height: 30rem;
+  height: auto;
   background-color: lightblue;
   margin: 1rem;
   /* margin-left: 30%; 
   margin-top: 2rem; */
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-lightgray {
+  background-color: lightgray;
+}
+
+.text-red {
+  color: red;
+}
+
+.proceed-section {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.proceed-section ul {
+  width: fit-content;
+  margin-left: 35rem;
+}
+
+.proceed-section ul li {
+  list-style: none;
+  width: fit-content;
+  margin: 2rem;;
+}
+
+.proceed-section ul li input[type='submit'] {
+  width: 10rem;
+  height: 3rem;
+  margin-bottom: 1rem;
 }

@@ -25,22 +25,23 @@
     <h2 class="title">Inventory Information</h2>
 
     <div class="table">
-        <table border="1">
+        <table>
         <tr>
-            <td>index</td>
-            <td>Item Id</td>
-            <td>Item Name</td>
-            <td>Item Quantity</td>
-            <td>Item Price</td>
-            <td>Item Sold</td>
-            <td>Item Status</td>
-            <td>Vendor Id</td>
-            <td>Actions</td>
+            <td><h4>index</h4></td>
+            <td><h4>Item Id</h4></td>
+            <td><h4>Item Name</h4></td>
+            <td><h4>Item Quantity</h4></td>
+            <td><h4>Item Price</h4></td>
+            <td><h4>Item Sold</h4></td>
+            <td><h4>Item Status</h4></td>
+            <td><h4>Vendor Id</h4></td>
+            <td><h4>Actions</h4></td>
         </tr>
         <?php 
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
+                if($row_count % 2 == 1) echo "<tr class='bg-lightgray'>";
+                else echo "<tr>";
                 echo "<td>" . $row_count++ . "</td>";
                 echo "<td>" . $row["item_id"] . "</td>";
                 echo "<td>" . $row["item_name"] . "</td>";

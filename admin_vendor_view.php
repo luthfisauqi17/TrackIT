@@ -20,21 +20,22 @@
     <h2 class="title">Vendor Information</h2>
 
     <div class="table">
-        <table border="1">
+        <table>
         <tr>
-            <td>index</td>
-            <td>Vendor Id</td>
-            <td>Vendor Name</td>
-            <td>Vendor Email</td>
-            <td>Vendor Phone</td>
-            <td>Vendor Address</td>
-            <td>Vendor Status</td>
-            <td>Actions</td>
+            <td><h4>index</h4></td>
+            <td><h4>Vendor Id</h4></td>
+            <td><h4>Vendor Name</h4></td>
+            <td><h4>Vendor Email</h4></td>
+            <td><h4>Vendor Phone</h4></td>
+            <td><h4>Vendor Address</h4></td>
+            <td><h4>Vendor Status</h4></td>
+            <td><h4>Actions</h4></td>
         </tr>
         <?php 
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
+                if($row_count % 2 == 1) echo "<tr class='bg-lightgray'>";
+                else echo "<tr>";
                 echo "<td>" . $row_count++ . "</td>";
                 echo "<td>" . $row["vendor_id"] . "</td>";
                 echo "<td>" . $row["vendor_name"] . "</td>";
