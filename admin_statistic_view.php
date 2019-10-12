@@ -30,7 +30,7 @@ while($row = mysqli_fetch_assoc($result_sold_items)) {
 }
 ?>" type="hidden" name="number" id="num"><br>
 
-<canvas id="myCanvas" width="900" height="500"></canvas>
+<canvas id="myCanvas" width="900" height="500" style="margin-left: 10%; border-bottom:1px solid black;"></canvas>
 
 <script>
     function draw() {
