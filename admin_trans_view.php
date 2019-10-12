@@ -33,7 +33,6 @@
             <td><h4>Transaction Item Quantity</h4></td>
             <td><h4>Transaction Item Price</h4></td>
             <td><h4>Transaction Date</h4></td>
-            <td><h4>Actions</h4></td>
         </tr>
         <?php 
             if (mysqli_num_rows($result) > 0) {
@@ -55,8 +54,6 @@
                 echo "<td>" . $row["trans_item_price"] . "</td>";
                 echo "<td>" . $row["trans_date"] . "</td>";
                 ?>
-                <td><a href="admin_inv_edit.php?edit=<?= $row['item_id'] ?>"><img class='icon' src='static/icon/edit.png'></a> 
-                    <a onclick="return confirm('Do you want to delete this record?')" href="admin_trans_view.php?delete=<?= $row['trans_id'] ?>"><img class='icon' src='static/icon/eraser.png'></a></td>
                 </tr>
             <?php 
             }
