@@ -18,7 +18,7 @@
 
 <?php include("admin_template/header.php"); ?>
     <form action="admin_vendor_add.php" method="POST">
-        <h2>New Vendor: </h2>
+        <h2><img class='icon' src='static/icon/plus.png'>New Vendor: </h2>
         <table>
             <tr>
                 <td>Vendor Id: </td>
@@ -45,5 +45,4 @@
             </tr>
         </table>
     </form>
-</body>
-</html>
+<?php include("admin_template/footer.php"); ?>

@@ -166,5 +166,4 @@
         </div>
     </form>
 
-</body>
-</html>
+<?php include("admin_template/footer.php"); ?>

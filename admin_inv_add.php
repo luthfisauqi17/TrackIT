@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td>Item Name: </td>
-                <td><input type="text" name="item_name"></td>
+                <td><input class="input-medium" type="text" name="item_name"></td>
             </tr>
             <tr>
                 <td>Item Quantity: </td>
@@ -61,5 +61,4 @@
             </tr>
         </table>
     </form>
-</body>
-</html>
+<?php include("admin_template/footer.php"); ?>

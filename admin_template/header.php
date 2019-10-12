@@ -10,11 +10,11 @@
 <body onload="draw()">
     <div class="navbar">
         <div class="navbar-left">
-            <h1>Store Information System</h1>
+            <a href="admin_inv_view.php"><img class="main-icon" src="static/icon/track.png" alt="icon"><h1>TrackIT</h1></a>
         </div>
         <div class="navbar-right">
             <ul>
-                <li><a href="index.php"><div><img class="icon" src="static/icon/logout.png" alt="">Logout</div></a></li>
+                <li><a href="index.php"><img class="icon" src="static/icon/logout.png" alt=""><p>Logout</p></a></li>
             </ul>
         </div>
     </div>

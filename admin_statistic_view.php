@@ -63,3 +63,5 @@ while($row = mysqli_fetch_assoc($result_sold_items)) {
    
     }
 </script>
+
+<?php include("admin_template/footer.php"); ?>

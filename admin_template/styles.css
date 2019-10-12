@@ -6,6 +6,15 @@
   font-family: 'Roboto', sans-serif;
 }
 
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -14,12 +23,20 @@
   border-bottom: 1px solid black;
 }
 
-.navbar-right ul {
+.navbar-right ul li a{
+  display: flex;
   margin: 0 2rem;
+  align-items: center;
 }
 
-.navbar-left h1 {
-  margin: 0 1rem;
+.navbar-left a {
+  display: flex;
+  margin: 0 2rem;
+  align-items: center;
+}
+
+.main-icon {
+  width: 3rem;
 }
 
 .display {
@@ -41,6 +58,8 @@
   margin: 0 1rem;
   height: 2rem;
   margin-top: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar ul li:hover {
