@@ -50,7 +50,7 @@
         <table>
             <tr>
                 <td>Item Name: </td>
-                <td><input class="input-medium" type="text" name="item_name" value="<?= $name ?>"></td>
+                <td><input type="text" name="item_name" value="<?= $name ?>"></td>
             </tr>
             <tr>
                 <td>Item Quantity: </td>

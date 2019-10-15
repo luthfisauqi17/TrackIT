@@ -19,7 +19,6 @@
 <?php include("admin_template/header.php"); ?>
 
     <h2 class="title">Vendor Information</h2>
-    <p><?php echo $_SESSION["user_name"] ?></p>
 
     <div class="table">
         <table>

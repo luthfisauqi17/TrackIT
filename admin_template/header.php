@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin-Panel</title>
     <link rel="shortcut icon" href="static/icon/track.png" type="image/x-icon">
-    <link rel="stylesheet" href="client_template/styles.css">
+    <link rel="stylesheet" href="admin_template/styles.css">
 </head>
 <body onload="draw()">
     <div class="navbar">

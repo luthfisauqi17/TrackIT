@@ -61,7 +61,7 @@
             </tr>
             <tr>
                 <td>Vendor Address: </td>
-                <td><input type="text" name="vendor_address" value="<?= $addrs ?>"></td>
+                <td><textarea name="vendor_address" id="" cols="80" rows="10"><?= $addrs ?></textarea></td>
             </tr>
             <tr>
                 <td>Vendor Status</td>

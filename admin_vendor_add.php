@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td>Vendor Address: </td>
-                <td><input type="text" name="vendor_address"></td>
+                <td><textarea name="vendor_address" id="" cols="80" rows="10"></textarea></td>
             </tr>
             <tr>
                 <td><button type="submit" name="submit">Add</button></td>

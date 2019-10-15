@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -92,9 +93,11 @@ a:hover {
 
 .item-list-box {
   width: fit-content;
-  height: 5rem;
+  height: 8rem;
   background-color: lightgray;
   margin: 1rem;
+  border-radius: 4px;
+  padding: 3px;
   /* margin-left: 50%; 
   margin-top: 2rem; */
 }
@@ -104,6 +107,8 @@ a:hover {
   height: auto;
   background-color: lightblue;
   margin: 1rem;
+  border-radius: 4px;
+  padding: 3px;
   /* margin-left: 30%; 
   margin-top: 2rem; */
 }
@@ -159,3 +164,47 @@ a:hover {
   display: flex;
   justify-content: space-between;
 }
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+select, input[type=number] {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+input[type=number] {
+  width: 70% !important;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button[type=button], button[type=submit], button[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
