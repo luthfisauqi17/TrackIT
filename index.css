@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    color: #333;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+}
+
+.navbar-left {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.navbar-right ul {
+    display: flex;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.navbar-right ul li {
+    list-style: none;
+    margin: 0 0.5rem;
+}
+
+.navbar-right ul li button {
+    width: 8rem;
+    height: 2rem;
+}
+
+.navbar-right ul li button:hover {
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text_between {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.home_img {
+    display: block;
+    margin: 2rem auto;
+    width: 14rem;
+}
+
+.main-icon {
+    width: 3rem;
+}
+
+.navbar-left a {
+    display: flex;
+    margin: 0 2rem;
+    align-items: center;
+}
+
+.adminBtn {
+    border: none;
+    background-color: lightcoral;
+}
+
+.clientBtn {
+    border: none;
+    background-color: lightcyan;
+}

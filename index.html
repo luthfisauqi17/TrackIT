@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="static/icon/track.png" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+    <title>TrackIT</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+                <a href="index.html"><img class="main-icon" src="static/icon/track.png" alt="icon"><h1>TrackIT</h1></a>
+        </div>
+        <div class="navbar-right">
+            <ul>
+                <li><button class="adminBtn" onclick="adminLogin();">Login As Admin</button></li>
+                <li><button class="clientBtn" onclick="clientLogin();">Login As Client</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="res"></div>
+
+    <div class="content">
+        <h1 style="margin-top: 1rem; text-align: center;">Hello, Welcome to <span style="color: lightblue;">TrackIT</span></h1>
+        <p class="text_between" class="text-center">TrackIT is a site where you can store all your item informations and keep track of it</p>
+        <img class="home_img" src="static/icon/floppy-disk.png">
+        <p class="text_between" class="text-center">With TrackIT, you can manage your items</p>
+        <img class="home_img" src="static/icon/manage.png">
+        <p class="text_between" class="text-center">Don't worry about losing you transaction script, we always record every transaction you've made</p>
+        <img class="home_img" src="static/icon/history.png">
+        <p class="text_between" class="text-center">So, what are you waiting for, Lets get started</p>
+        <img class="home_img" src="static/icon/route.png">
+        <p style="margin: 1rem;"><strong>*To make a new account, please contact your admin</strong></p>
+    </div>
+
+
+
+    <script>
+        function adminLogin() {
+            x = new XMLHttpRequest();
+            x.open('GET', "login-admin.php", true);
+            x.send();
+            x.onreadystatechange = stateChanged;
+        }
+        function stateChanged() {
+            if(x.readyState == 4) {
+                document.getElementById("res").innerHTML = x.responseText;
+            }
+        }
+
+        function clientLogin() {
+            x = new XMLHttpRequest();
+            x.open('GET', "login-client.php", true);
+            x.send();
+            x.onreadystatechange = stateChanged;
+        }
+    </script>
+</body>
+</html>

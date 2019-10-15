@@ -8,9 +8,10 @@
         $item_sold = 0;
         $item_status = "ACTIVE";
         $vendor_id = $_POST["vendor_id"];
+        $user_name = $_POST["user_name"];
 
         $sql = "INSERT INTO items VALUES
-            ('$item_id', '$item_name', '$item_remain', '$item_price', '$item_sold', '$item_status', '$vendor_id')";
+            ('$item_id', '$item_name', '$item_remain', '$item_price', '$item_sold', '$item_status', '$vendor_id', '$user_name')";
         
         if (mysqli_query($conn, $sql)) echo "New record created successfully";
         else echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -21,6 +22,10 @@
     include("config/db_connect.php");
     $sql_vendor = "SELECT * FROM vendors";
     $result_vendor = mysqli_query($conn, $sql_vendor);
+
+
+    $sql_user = "SELECT * FROM users";
+    $result_user = mysqli_query($conn, $sql_user);
     mysqli_close($conn);
 
 ?>
@@ -52,6 +57,17 @@
                         <?php 
                             while($row = mysqli_fetch_assoc($result_vendor)) {
                                 echo "<option value=" . $row["vendor_id"] . ">" . $row["vendor_name"] . "</option>";
+                            }
+                        ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Item Owner: </td>
+                <td>
+                    <select name="user_name">
+                        <?php 
+                            while($row = mysqli_fetch_assoc($result_user)) {
+                                echo "<option value=" . $row["user_name"] . ">" . $row["user_name"] . "</option>";
                             }
                         ?>
                 </td>

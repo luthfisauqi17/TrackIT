@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_GET['delete'])) {
         include("config/db_connect.php");
         $vdr_id = $_GET['delete'];
@@ -18,6 +19,7 @@
 <?php include("admin_template/header.php"); ?>
 
     <h2 class="title">Vendor Information</h2>
+    <p><?php echo $_SESSION["user_name"] ?></p>
 
     <div class="table">
         <table>

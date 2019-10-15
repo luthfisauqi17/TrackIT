@@ -1,4 +1,5 @@
 <?php    
+include("client_template/header.php");
 
     $error = false;
     $total_price = 0;
@@ -11,7 +12,7 @@
             $item_id = $row["pending_item_id"];
             $item_quantity = $row["pending_item_quantity"];
             $item_price = $row["pending_item_price"];
-            $user_name = "admin";
+            $user_name = $_SESSION["user_name"];
             // $trans_date = date("d/m/Y");
             $sql_insert_trans = "INSERT INTO transactions(trans_item_quantity, trans_item_price, item_id, user_name)
                                     VALUES('$item_quantity', '$item_price', '$item_id', '$user_name')";
@@ -29,7 +30,7 @@
             echo("No rows have been deleted.");
         }
         mysqli_close($conn);
-        header("Location: admin_trans_view.php");
+        header("Location: client_trans_view.php");
     } 
 
     if(isset($_GET["delete"])) {
@@ -56,7 +57,7 @@
         if(mysqli_query($conn, $sql_pending_delete)) echo "Data removed successfully";
         else echo "Error: " . $sql_pending_delete . "<br>" . mysqli_error($conn);
         mysqli_close($conn);
-        header("Location: admin_trans_add.php");
+        header("Location: client_trans_add.php");
     }
 
     if(isset($_POST["add-item"])) {
@@ -77,27 +78,30 @@
         else echo "Error: " . $sql_update_qty . "<br>" . mysqli_error($conn);
 
         $pending_item_price = $_POST["item_choosed_quantity"] * $item["item_price"];
+
+        $user_name = $_SESSION["user_name"];
         
         $sql_items_pending_insert = "INSERT INTO items_pending(pending_item_id, pending_item_name, pending_item_quantity, pending_item_availability, pending_item_price, user_name) 
-                                        VALUES('$pending_id', '$pending_item_name', '$pending_quantity', '$pending_item_availability', '$pending_item_price', 'Admin')";
+                                        VALUES('$pending_id', '$pending_item_name', '$pending_quantity', '$pending_item_availability', '$pending_item_price', '$user_name')";
         if (mysqli_query($conn, $sql_items_pending_insert)) echo "New record created successfully";
         else echo "Error: " . $sql_items_pending_insert . "<br>" . mysqli_error($conn);
         mysqli_close($conn);
-        header("Location: admin_trans_add.php");
+        header("Location: client_trans_add.php");
     }
     
     $row_count = 1;
     include("config/db_connect.php");
-    $sql_items = "SELECT * FROM  items";
+    $user_name1 = $_SESSION["user_name"];
+    $sql_items = "SELECT * FROM  items WHERE user_name='$user_name1'";
     $result_items = mysqli_query($conn, $sql_items);
     mysqli_close($conn);
 
 ?>
 
-<?php include("admin_template/header.php"); ?>
+
 <h2><img class='icon' src='static/icon/plus.png'>New Transaction: </h2>
 
-    <form class="item-list-box" action="admin_trans_add.php" method="POST">
+    <form class="item-list-box" action="client_trans_add.php" method="POST">
         <h3>Item List:</h3>
         <table>
             <tr>
@@ -119,7 +123,7 @@
         </table>
     </form>
 
-    <form class="your-cart-box" action="admin_trans_add.php" method="POST">
+    <form class="your-cart-box" action="client_trans_add.php" method="POST">
         <h3>Your cart:</h3>
         <table width="100%">
         <tr>
@@ -150,7 +154,7 @@
                     echo "<td>Rp." . $row["pending_item_price"] . "</td>"; 
                     $total_price += $row["pending_item_price"];
                     ?>
-                    <td><a onclick="return confirm('Do you want to delete this record?')" href="admin_trans_add.php?delete=<?= $row['pending_id'] ?>"><img class='icon' src='static/icon/eraser.png'></a></td>
+                    <td><a onclick="return confirm('Do you want to delete this record?')" href="client_trans_add.php?delete=<?= $row['pending_id'] ?>"><img class='icon' src='static/icon/eraser.png'></a></td>
                     <?php echo "</tr>";
                 }
             ?>
@@ -167,4 +171,4 @@
         </div>
     </form>
 
-<?php include("admin_template/footer.php"); ?>
+<?php include("client_template/footer.php"); ?>
