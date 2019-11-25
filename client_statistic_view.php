@@ -60,8 +60,8 @@ while($row = mysqli_fetch_assoc($result_sold_items)) {
             ctx.fillText(item_name_arr[i],X-50,canvas.height - h -10);
         }
             /* Text to display scale */
-            ctx.fillStyle = '#000000';
-            ctx.fillText('Scale X : ' +canvas.width+' Y : '+canvas.height,800,10);
+            // ctx.fillStyle = '#000000';
+            // ctx.fillText('Scale X : ' +canvas.width+' Y : '+canvas.height,800,10);
    
     }
 </script>

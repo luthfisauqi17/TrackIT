@@ -4,7 +4,7 @@ include("client_template/header.php");
     $error = false;
     $total_price = 0;
 
-    if(isset($_POST['proceed'])) {
+    if(isset($_GET['proceed'])) {
         include("config/db_connect.php");
         $sql_all_pending = "SELECT * FROM items_pending";
         $result_all_pending = mysqli_query($conn, $sql_all_pending);
@@ -15,7 +15,7 @@ include("client_template/header.php");
             $user_name = $_SESSION["user_name"];
             // $trans_date = date("d/m/Y");
             $sql_insert_trans = "INSERT INTO transactions(trans_item_quantity, trans_item_price, item_id, user_name)
-                                    VALUES('$item_quantity', '$item_price', '$item_id', '$user_name')";
+                                VALUES('$item_quantity', '$item_price', '$item_id', '$user_name')";
             if (mysqli_query($conn, $sql_insert_trans)) echo "New record created successfully";
             else echo "Error: " . $sql_insert_trans . "<br>" . mysqli_error($conn);
 
@@ -60,16 +60,16 @@ include("client_template/header.php");
         header("Location: client_trans_add.php");
     }
 
-    if(isset($_POST["add-item"])) {
+    if(isset($_GET["addItemBtn"])) {
         include("config/db_connect.php");
-        $pending_id = $_POST["item_id"];
+        $pending_id = $_GET["item_id"];
 
         $sql_item_info = "SELECT * FROM items WHERE item_id = '$pending_id'";
         $result_item_info = mysqli_query($conn, $sql_item_info);
         $item = mysqli_fetch_assoc($result_item_info);
 
         $pending_item_name = $item["item_name"];
-        $pending_quantity = $_POST["item_choosed_quantity"];
+        $pending_quantity = $_GET["item_choosed_quantity"];
 
         $pending_item_availability = $item["item_remain"] - $pending_quantity;
 
@@ -77,7 +77,7 @@ include("client_template/header.php");
         if (mysqli_query($conn, $sql_update_qty)) echo "New record updated successfully";
         else echo "Error: " . $sql_update_qty . "<br>" . mysqli_error($conn);
 
-        $pending_item_price = $_POST["item_choosed_quantity"] * $item["item_price"];
+        $pending_item_price = $_GET["item_choosed_quantity"] * $item["item_price"];
 
         $user_name = $_SESSION["user_name"];
         
@@ -101,7 +101,7 @@ include("client_template/header.php");
 
 <h2><img class='icon' src='static/icon/plus.png'>New Transaction: </h2>
 
-    <form class="item-list-box" action="client_trans_add.php" method="POST">
+    <div class="item-list-box">
         <h3>Item List:</h3>
         <table>
             <tr>
@@ -110,20 +110,20 @@ include("client_template/header.php");
             </tr>
             <tr>
                 <td>
-            <select name="item_id">
+            <select id="item_id" name="item_id">
             <?php 
                 while($row = mysqli_fetch_assoc($result_items)) {
                     echo "<option value=" . $row["item_id"] . ">" . $row["item_name"] . "</option>";
                 }
             ?>
                 </td>
-                <td><input default='0' type="number" name="item_choosed_quantity"></td>
-                <td><input type="submit" name="add-item" value="Add"></td>
+                <td><input id="item_choosed_quantity" default='0' type="number" name="item_choosed_quantity"></td>
+                <td><input onclick="addItemAjax();" id="addItemBtn" type="submit" name="add-item" value="Add"></td>
             </tr>    
         </table>
-    </form>
+    </div>
 
-    <form class="your-cart-box" action="client_trans_add.php" method="POST">
+    <div class="your-cart-box">
         <h3>Your cart:</h3>
         <table width="100%">
         <tr>
@@ -138,7 +138,8 @@ include("client_template/header.php");
             <?php
                 $row_count = 1;
                 include("config/db_connect.php");
-                $sql_pending_item_list = "SELECT * FROM items_pending";
+                $user_name = $_SESSION["user_name"];
+                $sql_pending_item_list = "SELECT * FROM items_pending WHERE user_name='$user_name'";
                 $result_pending_items = mysqli_query($conn, $sql_pending_item_list);
                 while($row = mysqli_fetch_assoc($result_pending_items)) {
                     if($row["pending_item_quantity"] == 0 || $row["pending_item_quantity"] > $row["pending_item_availability"]+1 || $row["pending_item_quantity"] < 0) {
@@ -165,10 +166,36 @@ include("client_template/header.php");
                 <li><?php echo "<td>Total price =<h3> Rp." . $total_price . "</h3></td>"?></li>
                 <?php 
                     if($error == true) echo "<li><input type='submit' name='proceed' value='Proceed' disabled><p class='text-red'>*There are some error/s in your transaction</p></li>";
-                    else echo "<li><input type='submit' name='proceed' value='Proceed'></li>";
+                    else echo "<li><input onclick='proceedItemAjax();' id='proceed' type='submit' name='proceed' value='Proceed'></li>";
                 ?>
             </ul>
         </div>
-    </form>
+    </div>
 
 <?php include("client_template/footer.php"); ?>
+
+<script>
+    function addItemAjax() {
+        item_id = document.getElementById("item_id").value;
+        item_choosed_quantity = document.getElementById("item_choosed_quantity").value;
+        addItemBtn = document.getElementById("addItemBtn").value;
+        x = new XMLHttpRequest();
+        x.open("GET","client_trans_add.php?item_id="+item_id+"&item_choosed_quantity="+item_choosed_quantity+"&addItemBtn="+addItemBtn, true) 
+        x.send();
+        x.onreadystatechange=stateChanged;
+    }
+
+    function proceedItemAjax() {
+        proceed = document.getElementById("proceed").value;
+        x = new XMLHttpRequest();
+        x.open("GET","client_trans_add.php?proceed="+proceed, true) 
+        x.send();
+        x.onreadystatechange=stateChanged;
+    }
+
+    function stateChanged() { 
+        if (x.readyState==4) { 
+            location.reload();
+        }
+    }
+</script>

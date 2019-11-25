@@ -17,6 +17,7 @@ a {
     justify-content: space-between;
     padding-bottom: 1rem;
     border-bottom: 1px solid black;
+    background-color: lightblue;
 }
 
 .navbar-left {
